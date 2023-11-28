@@ -1,0 +1,113 @@
+import React from "react";
+import { useRecoilState } from 'recoil';
+import { imageListState } from "@/recoilstate/RecoilState";
+import Image from "next/image";
+
+
+export default function Application() {
+
+  const [imageList, setImageList] = useRecoilState(imageListState);
+
+  return (
+    <>
+      <div className="system flex justify-between mt-[100px] mr-[50px]">
+        <div className="w-[620px] h-[370px]">
+          <h1 className="text-[40px] font-[800] mb-[20px]">
+            سیستم اپلیکیشن فروش
+          </h1>
+          <p className="text-[18px] text-[#626E94] leading-[45px] font-[400]">
+            ثبت رویداد های مالی، تهیه گزارش برای افراد درون سازمان با سرعت بالا
+            و حسابرسی سریع اسناد از مزایای ان نرم افزار است پس میتواند به سرعت
+            بخشیدن امور مالی به مجموعه ها برای رونق گرفتن و سود اوری در بازار
+            کسب و کار کمک بسزایی کند.
+          </p>
+          <div className="memebers flex justify-between items-center mt-[40px]">
+            <Image
+              src="/Images/right11.png"
+              alt=""
+              className="rounded-[20px]"
+              width={300} 
+              height={110}
+            />
+            <div className="flex gap-[100px] ">
+              <div className="flex flex-col gap-2 ">
+                <h1 className="text-[#0CA0A2]  text-[30px] font-[800]">۳۲۰+</h1>
+                <p className="text-[#0CA0A2] text-[14px]">خرید محصول</p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <h1 className="text-[#011627] text-[30px] font-semibold">
+                  ۳۲۰+
+                </h1>
+                <p className="text-[14px]">کاربر فعال</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="chart">
+          <Image src="/Images/Product views.png" alt="" className="mt-[-10px]" width={500} height={449} />
+        </div>
+      </div>
+
+      <div className="Why w-[620px] h-[350px] mr-[50px] ">
+        <h1 className="text-[34px] font-[700] mb-[20px]">
+          چرا باید از سیستم متانکست استفاده کنیم
+        </h1>
+        <p className="text-[18px] text-[#626E94] font-[400] leading-[45px]">
+          ثبت رویداد های مالی، تهیه گزارش برای افراد درون سازمان با سرعت بالا و
+          حسابرسی سریع اسناد از مزایای ان نرم افزار است پس میتواند به سرعت
+          بخشیدن امور مالی به مجموعه ها برای رونق گرفتن و سود اوری در بازار کسب
+          و کار کمک بسزایی کند.
+        </p>
+      </div>
+
+      <div className="alll flex justify-around">
+        <div className="Why w-[620px] h-[370px]  ">
+          <h1 className="text-[34px] font-[700] mb-[20px]">
+            امکانات موجود در سیستم حسابداری
+          </h1>
+          <p className="text-[18px] text-[#626E94] leading-[45px] font-[400]">
+            سیستم کامل مالی، سیستم کامل خزانه ، و سیستم کامل انبار که شامل ثبت
+            چک ها ، ثبت فاکتور های خرید و فروش ، نگهداری سوابق خرید و فروش ،
+            نگهداری سوابق مشتری ، حساب های بانکی و صندوق ، گردش موجودی کالا ،
+            حواله حساب ، صورتحساب سود و زیان ، تراز نامه ، اتصال به دستگاه پوز ،
+            ثبت فاکتور های درامد و هزینه میشوند.
+          </p>
+          <button className="w-[220px] h-[63px] mt-[25px] bg-[#0CA0A2]    rounded-[10px] text-white flex justify-center items-center text-[18px] font-[500] ">
+            اطلاعات بیشتر{" "}
+            <Image
+              src="/Images/arrow-left.png"
+              alt=""
+              className="mt-[5px] mr-[5px]"
+              width={23}
+              height={1000}
+            />
+          </button>
+        </div>
+
+        <div className="imgbox mt-[-200px] relative">
+          <Image
+          width={500}
+          height={449}
+            src="/Images/Pro tips.png"
+            alt=""
+            className="mt-[-30px] rounded-xl"
+          />
+
+          {imageList.map((image, index) => (
+            <Image
+              key={index}
+              src={image.src}
+              alt={image.alt}
+              className="absolute  cursor-pointer transition-all duration-700"
+              style={{ top: image.top, right: image.right }}
+              width={145}
+              height={181}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
